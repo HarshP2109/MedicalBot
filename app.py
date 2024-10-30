@@ -9,9 +9,12 @@ if 'page' not in st.session_state:
     st.session_state.page = "Home"
 
 # Function to display chat interface
-def chat_interface(surgeryBook, database):
+def chat_interface(bookName,database):
     chat = []
     # Accept user input
+    st.write(f"""
+        - Book : {bookName}
+             """)
     prompt = st.chat_input("Ask your question")
 
     if prompt:
@@ -41,7 +44,7 @@ def chat_interface(surgeryBook, database):
     # Book view button to display the uploaded file's content
     # if st.button("📖 View Book"):
     #     st.text_area("Book Content", surgeryBook, height=400, disabled=True)
-    st.download_button(label="📖 Download Book", data=surgeryBook, file_name=surgeryBook, mime="application/pdf")
+    # st.download_button(label="📖 Download Book", data=surgeryBook, file_name=surgeryBook, mime="application/pdf")
 
 # Main application
 st.set_page_config(page_title="Doctor's Study Assistant", layout="wide")
@@ -66,4 +69,4 @@ if page == "Home":
 elif page == "Surgery Book":
     st.title("Surgery Chat")
     st.session_state.page = "Rag"
-    chat_interface("Books\\SRB's Manual of Surgery 5th Edition.pdf", "SurgeryBook")
+    chat_interface("SRB's Manual of Surgery 5th Edition ---By Sriram Bhat M","SurgeryBook")
